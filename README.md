@@ -1,7 +1,13 @@
 🎲 Pig Game | Golden Edition
 
 <p align="center">
-A modern and elegant two-player dice game built with HTML, CSS, and JavaScript.
+A beautiful, modern, and interactive two-player dice game built with HTML, CSS, and JavaScript.
+</p>
+
+<p align="center">
+<a href="https://negar-younesi.github.io/pig-game/">
+<strong>🚀 PLAY LIVE DEMO</strong>
+</a>
 </p>
 
 <p align="center">
@@ -12,27 +18,30 @@ A modern and elegant two-player dice game built with HTML, CSS, and JavaScript.
 
 🌟 About The Project
 
-Pig Game is a fun and interactive two-player dice game featuring a premium black-and-gold design.
+Pig Game – Golden Edition is a fun and interactive two-player dice game featuring a premium black-and-gold design.
 
-The project is built using vanilla JavaScript, with no external JavaScript libraries or frameworks.
+Built with vanilla JavaScript, this project combines classic gameplay mechanics with modern styling, smooth animations, and a responsive layout.
 
 ✨ Features
-🎲 Random dice rolling
+🎲 Random dice rolling (1–6)
 👥 Two-player gameplay
 💾 Score tracking and saving
 🏆 Automatic winner detection
-🔄 New game functionality
+🔄 New Game functionality
 ✨ Smooth animations and visual effects
 📱 Responsive design for different screen sizes
 🖤 Elegant black-and-gold theme
 🎮 How To Play
 Player 1 starts the game.
 Click Roll Dice to roll the dice.
-Each roll adds points to the Current score.
+Each roll adds points to the current score.
 Click Hold to save your accumulated points.
-Rolling a 1 ends your turn.
+Rolling a 1 ends your turn and resets your temporary score.
 The first player to reach 50 points wins automatically.
-🛠️ Technologies
+
+Important: Reaching 50 points in the Current score immediately ends the game.
+
+🛠️ Technologies Used
 HTML5
 CSS3
 JavaScript (Vanilla JS)
@@ -53,30 +62,36 @@ pig-game/
 ├── dice-5.png
 └── dice-6.png
 
-🚀 Installation
-
-Clone the repository:
-
+🚀 Getting Started
+Clone the repository
 bash
 git clone https://github.com/negar-younesi/pig-game.git
 
-Navigate to the project folder:
-
+Navigate to the project folder
 bash
 cd pig-game
 
-Open index.html in your browser and start playing!
+Run the game
 
-🎯 Project Goal
+Open index.html in your browser and enjoy playing!
 
-This project was created to practice and improve my skills in:
+🎯 What I Learned
 
-DOM manipulation
-JavaScript event listeners
-Functions and conditional logic
-Arrays and variables
-CSS animations
-Responsive web design
+Through this project, I practiced and improved my skills in:
+
+DOM Manipulation
+JavaScript Event Listeners
+Functions and Conditional Logic
+Arrays and Variables
+CSS Animations and Transitions
+Responsive Web Design
+Git and GitHub
+🌐 Live Demo
+
+Try the game online:
+
+🎮 Play Pig Game
+
 👩‍💻 Author
 
 Negar Younesi
