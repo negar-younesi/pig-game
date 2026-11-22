@@ -1,0 +1,752 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+/* =========================
+   GLOBAL
+========================= */
+
+:root {
+  --gold: #d4af37;
+  --gold-light: #ffe69a;
+  --gold-dark: #99751c;
+
+  --black: #090909;
+  --dark: #151515;
+
+  --text: #f5f0df;
+  --muted: #a9a18c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(212, 175, 55, 0.14),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(153, 117, 28, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #050505, #171717 55%, #080808);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+  position: relative;
+
+  width: 100%;
+  max-width: 105rem;
+  min-height: 62rem;
+
+  display: flex;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 2rem;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 3rem 8rem rgba(0, 0, 0, 0.65),
+    0 0 4rem rgba(212, 175, 55, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+main::before {
+  content: '';
+
+  position: absolute;
+
+  width: 35rem;
+  height: 35rem;
+
+  background: rgba(212, 175, 55, 0.07);
+
+  filter: blur(100px);
+
+  left: 50%;
+  top: 35%;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+/* =========================
+   PLAYERS
+========================= */
+
+.player {
+  flex: 1;
+  min-width: 0;
+
+  position: relative;
+
+  padding: 10rem 3rem 4rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.015);
+
+  transition:
+    background 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.player--active {
+  background: linear-gradient(
+    145deg,
+    rgba(212, 175, 55, 0.13),
+    rgba(255, 255, 255, 0.025)
+  );
+
+  box-shadow: inset 0 0 5rem rgba(212, 175, 55, 0.06);
+}
+
+.player--active::after {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  width: 55%;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-light),
+    transparent
+  );
+
+  box-shadow: 0 0 2rem var(--gold);
+}
+
+/* =========================
+   PLAYER NAME
+========================= */
+
+.name {
+  font-size: clamp(2rem, 3vw, 3.5rem);
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  color: var(--muted);
+
+  text-align: center;
+
+  margin-bottom: 1.5rem;
+
+  transition: 0.3s;
+}
+
+.player--active .name {
+  color: var(--gold-light);
+  font-weight: 900;
+
+  text-shadow: 0 0 2rem rgba(212, 175, 55, 0.3);
+}
+
+/* =========================
+   SCORE
+========================= */
+
+.score {
+  font-size: clamp(5rem, 8vw, 9rem);
+
+  font-weight: 800;
+
+  color: var(--gold);
+
+  text-shadow: 0 0 2rem rgba(212, 175, 55, 0.25);
+
+  margin-bottom: auto;
+
+  text-align: center;
+
+  transition: 0.3s;
+}
+
+.player--active .score {
+  color: var(--gold-light);
+
+  text-shadow: 0 0 3rem rgba(212, 175, 55, 0.4);
+}
+
+/* =========================
+   CURRENT
+========================= */
+
+.current {
+  width: min(100%, 22rem);
+
+  padding: 2rem;
+
+  text-align: center;
+
+  border-radius: 1.5rem;
+
+  background: linear-gradient(
+    145deg,
+    rgba(212, 175, 55, 0.2),
+    rgba(153, 117, 28, 0.08)
+  );
+
+  border: 1px solid rgba(212, 175, 55, 0.35);
+
+  box-shadow:
+    0 1rem 3rem rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  transition: 0.4s;
+}
+
+.player--active .current {
+  background: linear-gradient(
+    145deg,
+    rgba(212, 175, 55, 0.3),
+    rgba(153, 117, 28, 0.13)
+  );
+
+  border-color: rgba(255, 230, 154, 0.65);
+
+  box-shadow: 0 0 2.5rem rgba(212, 175, 55, 0.12);
+}
+
+.current-label {
+  color: var(--gold-light);
+
+  font-size: 1.5rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  margin-bottom: 1rem;
+}
+
+.current-score {
+  color: #fff;
+
+  font-size: 4rem;
+  font-weight: 900;
+
+  text-shadow: 0 0 1.5rem rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+  position: absolute;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 5;
+
+  border: 1px solid rgba(255, 230, 154, 0.55);
+  border-radius: 5rem;
+
+  padding: 1.2rem 2.5rem;
+
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  color: #17120a;
+
+  background: linear-gradient(135deg, #ffe69a, #d4af37 55%, #a47c1d);
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  box-shadow:
+    0 0.8rem 2rem rgba(0, 0, 0, 0.35),
+    0 0 2rem rgba(212, 175, 55, 0.12);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.btn:hover {
+  transform: translate(-50%, -3px);
+
+  filter: brightness(1.15);
+
+  box-shadow:
+    0 1rem 3rem rgba(0, 0, 0, 0.4),
+    0 0 2.5rem rgba(212, 175, 55, 0.3);
+}
+
+.btn:active {
+  transform: translate(-50%, 1px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.btn--new {
+  top: 2.5rem;
+}
+
+.btn--roll {
+  top: 39rem;
+}
+
+.btn--hold {
+  top: 46rem;
+}
+
+/* =========================
+   DICE
+========================= */
+
+.dice {
+  position: absolute;
+
+  left: 50%;
+  top: 15rem;
+
+  transform: translateX(-50%);
+
+  width: 10rem;
+  height: 10rem;
+
+  object-fit: contain;
+
+  border-radius: 1.5rem;
+
+  background: #f8f5eb;
+
+  padding: 0.5rem;
+
+  box-shadow:
+    0 1.5rem 4rem rgba(0, 0, 0, 0.55),
+    0 0 2.5rem rgba(212, 175, 55, 0.2);
+
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* =========================
+   DICE ANIMATION
+========================= */
+
+.dice-rolling {
+  animation: diceRoll 0.65s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+@keyframes diceRoll {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) rotate(0deg) scale(0.5);
+  }
+
+  35% {
+    opacity: 1;
+    transform: translateX(-50%) rotate(180deg) scale(1.2);
+  }
+
+  70% {
+    transform: translateX(-50%) rotate(320deg) scale(0.9);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(360deg) scale(1);
+  }
+}
+
+/* =========================
+   WINNER
+========================= */
+
+.player--winner {
+  background: linear-gradient(
+    145deg,
+    rgba(212, 175, 55, 0.22),
+    rgba(20, 20, 20, 0.95)
+  );
+
+  box-shadow: inset 0 0 6rem rgba(212, 175, 55, 0.15);
+}
+
+.player--winner .name {
+  color: var(--gold-light);
+  font-weight: 900;
+}
+
+.player--winner .score {
+  color: var(--gold-light);
+}
+
+/* =========================
+   WINNER GLOW ANIMATION
+========================= */
+
+.winner-animation {
+  animation: winnerGlow 2s ease-in-out infinite alternate;
+  z-index: 2;
+}
+
+@keyframes winnerGlow {
+  0% {
+    box-shadow:
+      inset 0 0 3rem rgba(212, 175, 55, 0.1),
+      0 0 1rem rgba(212, 175, 55, 0.1);
+  }
+
+  100% {
+    box-shadow:
+      inset 0 0 7rem rgba(212, 175, 55, 0.3),
+      0 0 4rem rgba(212, 175, 55, 0.45);
+  }
+}
+
+/* =========================
+   WINNER TEXT ANIMATION
+========================= */
+
+.player--winner .name {
+  animation: winnerText 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes winnerText {
+  from {
+    text-shadow: 0 0 1rem rgba(212, 175, 55, 0.3);
+    transform: scale(1);
+  }
+
+  to {
+    text-shadow:
+      0 0 2rem #d4af37,
+      0 0 4rem rgba(255, 230, 154, 0.8);
+
+    transform: scale(1.08);
+  }
+}
+
+/* =========================
+   WINNER SCORE ANIMATION
+========================= */
+
+.player--winner .score {
+  animation: scorePop 0.7s ease-out;
+}
+
+@keyframes scorePop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  main {
+    min-height: 55rem;
+  }
+
+  .player {
+    padding: 9rem 1.5rem 3rem;
+  }
+
+  .name {
+    font-size: clamp(1.6rem, 3vw, 2.8rem);
+    letter-spacing: 1px;
+  }
+
+  .score {
+    font-size: clamp(4rem, 8vw, 6rem);
+  }
+
+  .current {
+    padding: 1.5rem;
+  }
+
+  .btn {
+    font-size: 1.3rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .btn--roll {
+    top: 36rem;
+  }
+
+  .btn--hold {
+    top: 43rem;
+  }
+
+  .dice {
+    top: 14rem;
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+
+  main {
+    min-height: 52rem;
+    border-radius: 1.5rem;
+  }
+
+  .player {
+    padding: 8rem 0.8rem 3rem;
+  }
+
+  .name {
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    letter-spacing: 0;
+  }
+
+  .score {
+    font-size: clamp(3.5rem, 11vw, 5rem);
+  }
+
+  .current {
+    width: 100%;
+    padding: 1.2rem 0.5rem;
+  }
+
+  .current-label {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .current-score {
+    font-size: 2.8rem;
+  }
+
+  .btn {
+    font-size: 1.1rem;
+    padding: 0.9rem 1.2rem;
+    letter-spacing: 0;
+  }
+
+  .btn--new {
+    top: 1.8rem;
+  }
+
+  .btn--roll {
+    top: 36rem;
+  }
+
+  .btn--hold {
+    top: 43rem;
+  }
+
+  .dice {
+    top: 13rem;
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  main {
+    min-height: 49rem;
+  }
+
+  .player {
+    padding: 8rem 0.5rem 2rem;
+  }
+
+  .name {
+    font-size: 1.3rem;
+  }
+
+  .score {
+    font-size: 3.5rem;
+  }
+
+  .current-label {
+    font-size: 1rem;
+  }
+
+  .current-score {
+    font-size: 2.3rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .btn--roll {
+    top: 34rem;
+  }
+
+  .btn--hold {
+    top: 41rem;
+  }
+}
+
+/* =========================
+   LANDSCAPE MOBILE
+========================= */
+
+@media (max-height: 550px) and (orientation: landscape) {
+  body {
+    padding: 1rem;
+  }
+
+  main {
+    min-height: 42rem;
+  }
+
+  .player {
+    padding-top: 7rem;
+  }
+
+  .btn--new {
+    top: 1rem;
+  }
+
+  .btn--roll {
+    top: 27rem;
+  }
+
+  .btn--hold {
+    top: 33rem;
+  }
+
+  .dice {
+    top: 11rem;
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================
+   WINNER MESSAGE
+========================= */
+
+.winner-message {
+  position: absolute;
+  top: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: 90%;
+
+  z-index: 10;
+
+  color: #ffe69a;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  text-align: center;
+
+  text-shadow:
+    0 0 1rem #d4af37,
+    0 0 3rem rgba(212, 175, 55, 0.7);
+
+  animation: winnerMessage 1s ease-in-out infinite alternate;
+
+  pointer-events: none;
+}
+
+@keyframes winnerMessage {
+  from {
+    opacity: 0.7;
+    scale: 0.98;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1.05;
+  }
+}
